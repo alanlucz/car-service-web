@@ -1,0 +1,25 @@
+{% extends '__main.jinja' %}
+{% from 'macros/form.jinja' import form_field, form_inline_field, form_submit with context %}
+
+{% block content %}
+    <div class="main">
+        <div class="container-50">
+            <div class="employee-header">
+                <h1>Moje vozidla</h1>
+                <a href="{{ url_for('vehicle.view_add_vehicle_page') }}" class="add-button"><i class="fa-solid fa-plus fa-xl"></i></a>
+            </div>
+
+            <div class="employee-list">
+                {% for vehicle in vehicles %}
+                    <div class="employee-card">
+                        <div class="employee-info">
+                            <div class="avatar"><i class="fa-solid fa-car fa-lg" style="color: white"></i></div>
+                            <div class="employee-name">{{ vehicle.znacka_vozidla }} <br /> {{ vehicle.spz }}</div>
+                            <div class="employee-role">{{ vehicle.typ_vozidla }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

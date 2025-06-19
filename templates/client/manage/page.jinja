@@ -1,0 +1,31 @@
+{% extends '__main.jinja' %}
+{% from 'macros/form.jinja' import form_field, form_inline_field, form_submit with context %}
+
+{% block content %}
+    <div class="main">
+        <div class="container-50">
+            <div class="employee-header">
+                <h1>Zákazníci</h1>
+                                <a href="{{ url_for('client.view_add_client_page') }}" class="add-button"><i class="fa-solid fa-plus fa-xl"></i></a>
+            </div>
+
+            <div class="employee-list">
+                {% for client in clients %}
+                    <div class="employee-card">
+                        <div class="employee-info">
+                            <div class="avatar"><i class="fa-solid fa-user fa-lg" style="color: white"></i></div>
+                            <div class="employee-name">{{ client.jmeno }} {{ client.prijmeni }}</div>
+                        </div>
+                        <div class="employee-actions">
+                            <a class="btn history" href="{{ url_for('client.view_client_history_page', client_id=client['id_uzivatele']) }}">Historie služeb</a>
+                            <a class="btn edit" href="{{ url_for('client.view_edit_client_page', client_id=client['id_uzivatele']) }}">Upravit</a>
+
+                            <a class="btn history-mobile" href="{{ url_for('client.view_client_history_page', client_id=client['id_uzivatele']) }}"><i class="fa-solid fa-circle-info fa-xl"></i></a>
+                            <a class="btn edit-mobile" href="{{ url_for('client.view_edit_client_page', client_id=client['id_uzivatele']) }}"><i class="fa-solid fa-pen-to-square fa-xl"></i></a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

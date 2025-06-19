@@ -1,0 +1,45 @@
+{% extends '__main.jinja' %}
+{% from 'macros/form.jinja' import form_field, form_inline_field, form_submit with context %}
+
+{% block content %}
+    <div class="main">
+        <div class="container-80">
+            <div class="orders-header">
+                <h1>Objednávky</h1>
+            </div>
+
+            <div class="orders-list">
+                {% for order in orders %}
+                    <div class="order-card">
+                        <div class="order-card-first-row">
+                            <div class="order-info">
+                                <div class="avatar"><i class="fa-solid fa-file fa-lg" style="color: white"></i></div>
+                                <div class="status-square {% if order.stav == 'čekající' %}red{% elif order.stav == 'v procesu' %}yellow{% else %}green{% endif %}"></div>
+                                <div class="order-status">{{ order.stav }}</div>
+                                <div class="order-description">{{ order.popis }}</div>
+                            </div>
+                            <div class="order-actions">
+                                <a class="btn edit" href="{{ url_for('order.view_edit_order_page', order_id=order['id_objednavky']) }}">Upravit</a>
+                                <a class="btn btn edit-mobile" href="{{ url_for('order.view_edit_order_page', order_id=order['id_objednavky']) }}"><i class="fa-solid fa-pen-to-square fa-xl"></i></a>
+                            </div>
+                        </div>
+                        <div class="order-details">
+                            <div>
+                                <div>Od: {{ order.datum_vzniku }}</div>
+                                <div>Do: {{ order.preferovany_termin }}</div>
+                            </div>
+                            <div>
+                                <div>{{ order.jmeno }}</div>
+                                <div>{{ order.prijmeni }}</div>
+                            </div>
+                            <div>
+                                <div>{{ order.znacka_vozidla }}</div>
+                                <div>{{ order.spz }}</div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

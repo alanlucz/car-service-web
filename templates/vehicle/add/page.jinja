@@ -1,0 +1,16 @@
+{% extends '__main.jinja' %}
+{% from 'macros/form.jinja' import form_field, form_inline_field, form_submit with context %}
+
+{% block content %}
+    <div class="main">
+        <div class="container-50">
+                <h1>Přidat nové vozidlo do garáže</h1>
+                <form method="POST">
+                    {{ form_field(form.brand) }}
+                    {{ form_field(form.license_plate) }}
+                    {{ form_field(form.type) }}
+                    {{ form_submit("Přidat vozidlo") }}
+                </form>
+        </div>
+    </div>
+{% endblock %}

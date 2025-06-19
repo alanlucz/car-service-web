@@ -1,0 +1,69 @@
+{% block header %}
+    <header class="page-width">
+        <div class="profile-mobile-container">
+            <div class="profile-mobile-btn" onclick="showProfileMenu()">
+                <i class="fa-solid fa-user fa-xl" style="color: white"></i>
+            </div>
+            <div class="profile-menu" id="profile-menu">
+                <ul>
+                    {% if session['authenticated'] %}
+                        <li><a href="{{ url_for('user.signout') }}">Odhlásit se</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('user.view_signin_page') }}">Přihlásit se</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <a href="{{ url_for ('home_page.page') }}" class="logo">H&amp;R</a>
+        <nav class="nav-desktop">
+            <ul>
+                <li><a href="{{ url_for('home_page.page') }}">Domů</a></li>
+                {% if session['authenticated'] %}
+                    {% if session['role_id'] == 4 %}
+                        {% include '__header_client.jinja' %}
+                    {% elif session['role_id'] == 3 %}
+                        {% include '__header_admin.jinja' %}
+                    {% elif session['role_id'] == 2 %}
+                        {% include '__header_technician.jinja' %}
+                    {% elif session['role_id'] == 1 %}
+                        {% include '__header_manager.jinja' %}
+                    {% endif %}
+                {% else %}
+                    {% include '__header_noauth.jinja' %}
+                {% endif %}
+            </ul>
+        {% if session['authenticated'] %}
+            <div class="email">
+                <div>Přihlášen jako:</div>
+                <div>{{ session['email'] }}</div>
+            </div>
+            <a href="{{ url_for('user.signout') }}" class="signout-btn" title="Odhlásit se"><i class="fa-solid fa-arrow-right-from-bracket fa-xl"></i></a>
+        {% else %}
+            <a href="{{ url_for('user.view_signin_page') }}" class="btn">Přihlásit se</a>
+        {% endif %}
+        </nav>
+        <div class="nav-mobile-container">
+            <div class="nav-mobile-btn" onclick="showNavMenu()">
+                <i class="fa-solid fa-bars fa-2x"></i>
+            </div>
+            <div class="nav-mobile" id="nav-mobile">
+                <ul>
+                    <li><a href="{{ url_for('home_page.page') }}">Domů</a></li>
+                    {% if session['authenticated'] %}
+                        {% if session['role_id'] == 4 %}
+                            {% include '__header_client.jinja' %}
+                        {% elif session['role_id'] == 3 %}
+                            {% include '__header_admin.jinja' %}
+                        {% elif session['role_id'] == 2 %}
+                            {% include '__header_technician.jinja' %}
+                        {% elif session['role_id'] == 1 %}
+                            {% include '__header_manager.jinja' %}
+                        {% endif %}
+                    {% else %}
+                        {% include '__header_noauth.jinja' %}
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </header>
+{% endblock %}

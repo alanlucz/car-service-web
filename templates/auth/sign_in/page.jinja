@@ -1,0 +1,16 @@
+{% extends '__main.jinja' %}
+{% from 'macros/form.jinja' import form_field, form_inline_field, form_submit with context %}
+
+{% block content %}
+    <div id="signin" class="signin">
+        <div class="container">
+            <h1>Přihlásit se</h1>
+            <form name="signin" class="signin-form" method="post">
+                {{ form_field(form.login) }}
+                {{ form_field(form.password) }}
+                {{ form_submit("Přihlásit se") }}
+            </form>
+                <a href="{{ url_for('user.view_register_page') }}">Ještě nemám účet. (Registrovat se)</a>
+        </div>
+    </div>
+{% endblock %}

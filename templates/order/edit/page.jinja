@@ -1,0 +1,15 @@
+{% extends '__main.jinja' %}
+{% from 'macros/form.jinja' import form_field, form_inline_field, form_submit with context %}
+
+{% block content %}
+    <div class="main">
+        <div class="container-50">
+                <h1>Aktualizovat informace objednávky</h1>
+                <form method="POST">
+                    {{ form_field(form.status) }}
+                    {{ form_field(form.note) }}
+                    {{ form_submit("Potvrdit aktualizaci objednávky") }}
+                </form>
+        </div>
+    </div>
+{% endblock %}

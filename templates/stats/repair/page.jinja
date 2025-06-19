@@ -1,0 +1,22 @@
+{% extends '__main.jinja' %}
+{% from 'macros/form.jinja' import form_field, form_inline_field, form_submit with context %}
+
+{% block content %}
+    <div class="main">
+    {% include '__stats_header.jinja' %}
+        <div class="container-50">
+            <h1>Počet oprav za určité období</h1>
+
+            <form method="POST">
+                {{ form_field(form.start_date) }}
+                {{ form_field(form.end_date) }}
+                {{ form_submit("Zobrazit") }}
+            </form>
+
+            <div class="bar-chart">
+                <p>Celkem oprav: {{ repairs['repair_count'] }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

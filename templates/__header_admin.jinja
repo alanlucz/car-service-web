@@ -1,0 +1,3 @@
+<li><a href="{{ url_for('client.view_manage_clients_page') }}" class="{% if request.endpoint == 'client.view_manage_clients_page' %} active {% endif %}">Zákazníci</a></li>
+<li><a href="{{ url_for('stock.view_manage_stock_page') }}" class="{% if request.endpoint == 'stock.view_manage_stock_page' %} active {% endif %}">Sklad</a></li>
+<li><a href="{{ url_for('order.view_manage_orders_page') }}" class="{% if request.endpoint == 'order.view_manage_orders_page' %} active {% endif %}">Objednávky</a></li>

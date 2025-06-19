@@ -1,0 +1,26 @@
+{% extends '__main.jinja' %}
+{% from 'macros/form.jinja' import form_field, form_inline_field, form_submit with context %}
+
+{% block content %}
+    <div class="main">
+        <div class="container-50">
+            <h1>Historie služeb - {{ client['jmeno'] }} {{ client['prijmeni'] }}</h1>
+            <table class="stats-table">
+                <thead>
+                    <tr>
+                        <th>Datum vzniku</th>
+                        <th>Služba</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                        <tr>
+                            <td>{{ order['start_date'] }}</td>
+                            <td>{{ order['repair_type'] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

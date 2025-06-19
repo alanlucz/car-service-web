@@ -1,0 +1,31 @@
+{% extends '__main.jinja' %}
+
+{% block content %}
+    <div class="main">
+        {% include '__stats_header.jinja' %}
+        <div class="container-50">
+            <h1>Žebříček nejčastěji opravovaných typů vozidel</h1>
+
+            <table class="stats-table">
+                <thead>
+                    <tr>
+                        <th>Pořadí</th>
+                        <th>Model Vozidla</th>
+                        <th>Počet Oprav</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% set rank = 1 %}
+                    {% for vehicle in leaderboard %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ vehicle['typ_vozidla'] }}</td>
+                            <td>{{ vehicle['repair_count'] }}</td>
+                        </tr>
+                        {% set rank = rank + 1 %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

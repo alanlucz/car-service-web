@@ -1,0 +1,14 @@
+{% block header %}
+    <header class="page-width stats-header">
+        <nav class="nav-stats">
+            <ul>
+                <li><a href="{{ url_for('stats.view_stats_repairs') }}" class="{% if request.endpoint == 'stats.view_stats_repairs' %} active {% endif %}">Počet oprav</a></li>
+                <li><a href="{{ url_for('stats.view_stats_vehicles') }}" class="{% if request.endpoint == 'stats.view_stats_vehicles' %} active {% endif %}">Vozy</a></li>
+                <li><a href="{{ url_for('stats.view_stats_employees') }}" class="{% if request.endpoint == 'stats.view_stats_employees' %} active {% endif %}">Zaměstnanci</a></li>
+                <li><a href="{{ url_for('stats.view_stats_income') }}" class="{% if request.endpoint == 'stats.view_stats_income' %} active {% endif %}">Příjmy</a></li>
+                <li><a href="{{ url_for('stats.view_stats_services') }}" class="{% if request.endpoint == 'stats.view_stats_services' %} active {% endif %}">Služby</a></li>
+            </ul>
+        </nav>
+</header>
+
+{% endblock %}

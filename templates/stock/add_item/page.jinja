@@ -1,0 +1,20 @@
+{% extends '__main.jinja' %}
+{% from 'macros/form.jinja' import form_field, form_inline_field, form_submit with context %}
+
+{% block content %}
+    <div class="main">
+        <div class="container-50">
+                <h1>Přidat novou položku do skladu</h1>
+                <form method="POST">
+                    {{ form_field(form.name) }}
+                    {{ form_field(form.maker) }}
+                    {{ form_field(form.amount) }}
+                    {{ form_field(form.purchase_price) }}
+                    {{ form_field(form.selling_price) }}
+                    {{ form_field(form.min_amount) }}
+                    {{ form_field(form.description) }}
+                    {{ form_submit("Přidat položku") }}
+                </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,4 @@
+<li><a href="{{ url_for('employee.view_manage_employees_page') }}" class="{% if request.endpoint == 'employee.view_manage_employees_page' %} active {% endif %}">Zaměstnanci</a></li>
+<li><a href="{{ url_for('client.view_manage_clients_page') }}" class="{% if request.endpoint == 'client.view_manage_clients_page' %} active {% endif %}">Zákazníci</a></li>
+<li><a href="{{ url_for('order.view_manage_orders_page') }}" class="{% if request.endpoint == 'order.view_manage_orders_page' %} active {% endif %}">Objednávky</a></li>
+<li><a href="{{ url_for('stats.view_stats_page') }}" class="{% if parent_active == 'stats' %} active {% endif %}">Statistiky</a></li>

@@ -1,0 +1,32 @@
+{% extends '__main.jinja' %}
+{% from 'macros/form.jinja' import form_field, form_inline_field, form_submit with context %}
+
+{% block content %}
+    <div class="main">
+        <div class="container-50">
+                <h1>Zaznamenat novou opravu</h1>
+                <form method="POST">
+                    {{ form_field(form.description) }}
+                    {{ form_field(form.time) }}
+                    {{ form_field(form.start_date) }}
+                    {{ form_field(form.end_date) }}
+                    {{ form_field(form.order) }}
+
+                    <h2>Použité položky pro opravu</h2>
+                    <div class="list-items">
+                        {% for item in items %}
+                            <div class="item">
+                                <div class="item-details">
+                                    <input type="checkbox" name="selected_items" value="{{ item['id_polozky'] }}" id="item_{{ item['id_polozky']}}">
+                                    <label for="item_{{ item['id_polozky'] }}">{{ item['nazev'] }} (Kusů na skladě: {{ item['pocet_kusu'] }})</label>
+                                </div>
+                                <input type="number" name="amount[{{ item['id_polozky'] }}]" min="1" max="{{ item['pocet_kusu'] }}" placeholder="Počet kusů">
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    {{ form_submit("Uložit opravu") }}
+                </form>
+        </div>
+    </div>
+{% endblock %}

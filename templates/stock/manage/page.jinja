@@ -1,0 +1,33 @@
+{% extends '__main.jinja' %}
+{% from 'macros/form.jinja' import form_field, form_inline_field, form_submit with context %}
+
+{% block content %}
+    <div class="main">
+        <div class="container-50">
+            <div class="employee-header">
+                <h1>Sklad</h1>
+                <a href="{{ url_for('stock.view_add_item_page') }}" class="add-button"><i class="fa-solid fa-plus fa-xl"></i></a>
+            </div>
+
+            <div class="employee-list">
+                {% for item in items %}
+                    <div class="employee-card">
+                        <div class="employee-info">
+                            <div class="avatar"><i class="fa-solid fa-barcode fa-lg" style="color: white"></i></div>
+                            <div class="status-square {{ item.status }}"></div>
+                            <div class="employee-role">{{ item.pocet_kusu }} ks</div>
+                            <div>
+                                <div class="employee-name">{{ item.nazev }}</div>
+                                <div class="employee-role">{{ item.vyrobce }}</div>
+                            </div>
+                        </div>
+                        <div class="employee-actions">
+                            <a class="btn edit" href="{{ url_for('stock.view_edit_item_page', item_id=item['id_polozky']) }}">Upravit</a>
+                            <a class="btn edit-mobile" href="{{ url_for('stock.view_edit_item_page', item_id=item['id_polozky']) }}"><i class="fa-solid fa-pen-to-square fa-xl"></i></a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends '__main.jinja' %}
+{% from 'macros/form.jinja' import form_field, form_inline_field, form_submit with context %}
+
+{% block content %}
+    <div class="main">
+        <div class="container-50">
+                <h1>Upravit profil zaměstnance</h1>
+                <form method="POST">
+                    {{ form_field(form.first_name) }}
+                    {{ form_field(form.last_name) }}
+                    {{ form_field(form.email) }}
+                    {{ form_field(form.role) }}
+                    {{ form_submit("Potvrdit úpravy") }}
+                </form>
+        </div>
+    </div>
+{% endblock %}

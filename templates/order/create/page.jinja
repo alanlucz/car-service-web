@@ -1,0 +1,19 @@
+{% extends '__main.jinja' %}
+{% from 'macros/form.jinja' import form_field, form_inline_field, form_submit with context %}
+
+{% block content %}
+    <div class="main">
+        <div class="container-50">
+                <h1>Vytvořit novou objednávku</h1>
+                <form class="create-order" method="POST">
+                    {{ form_field(form.vehicle) }}
+                    <a href="{{ url_for('vehicle.view_add_vehicle_page') }}">Ještě nemáte přidané žádné vozidlo? (Přidat)</a>
+                    {{ form_field(form.service_type) }}
+                    {{ form_field(form.description) }}
+                    {{ form_field(form.preferred_date) }}
+
+                    {{ form_submit("Odeslat objednavku") }}
+                </form>
+        </div>
+    </div>
+{% endblock %}

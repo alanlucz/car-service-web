@@ -1,0 +1,29 @@
+{% extends '__main.jinja' %}
+
+{% block content %}
+    <div class="main">
+        {% include '__stats_header.jinja' %}
+        <div class="container-50">
+            <h1>Žebříček typů služeb</h1>
+
+            <table class="stats-table">
+                <thead>
+                    <tr>
+                        <th>Pořadí</th>
+                        <th>Služba</th>
+                        <th>Počet</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for service in services %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ service['nazev'] }}</td>
+                            <td>{{ service['count'] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

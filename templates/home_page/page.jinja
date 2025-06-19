@@ -1,0 +1,99 @@
+{% extends '__main.jinja' %}
+
+{% block content %}
+    <div class="main">
+        <section id="hero" class="hero">
+            <div class="text">
+                <div class="main-text">
+                    <h1>Autoservis <span class="hr-text">H&amp;R</span></h1>
+                    <p>Dejte Vaše vozidlo do rukou profesionálů.</p>
+                </div>
+                <a href="{{ url_for('order.view_create_order_page') }}" class="btn">Objednat se</a>
+            </div>
+            <div class="image">
+                <img src="{{ url_for('static', filename='img/r8-artwork.png') }}">
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="container">
+                <h1>Naše služby</h1>
+                <div class="services-list">
+                    <div class="service-card">
+                        <div class="left">
+                            <i class="fa-solid fa-laptop-medical fa-xl"></i>
+                        </div>
+                        <div class="right">
+                            <h1>Diagnostika</h1>
+                            <p>Nabízíme diagnostické služby, díky kterým vám pomůžeme nalézt a vyřešit problémy s vozidlem.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="left">
+                            <i class="fa-regular fa-sun fa-xl"></i>
+                        </div>
+                        <div class="right">
+                            <h1>Údržba</h1>
+                            <p>Provádíme i běžné údržby - např. výměna oleje včetně filtrů a další.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="left">
+                            <i class="fa-solid fa-list-check fa-xl"></i>
+                        </div>
+                        <div class="right">
+                            <h1>Kontrola</h1>
+                            <p>V naší nabídce jsou také služby jako kontrola vozidla před koupí a příprava na STK.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery">
+            <h1>Galerie</h1>
+            <div class="gallery-grid">
+                <div class="gallery-item large">
+                    <img src="{{ url_for('static', filename='img/veyron.jpg') }}" alt="Bugatti Veyron">
+                </div>
+                <div class="gallery-item">
+                    <img src="{{ url_for('static', filename='img/huracan.jpg') }}" alt="Lamborghini Huracan">
+                </div>
+                <div class="gallery-item">
+                    <img src="{{ url_for('static', filename='img/xm.jpg') }}" alt="BMW XM">
+                </div>
+                <div class="gallery-item">
+                    <img src="{{ url_for('static', filename='img/ftype.jpg') }}" alt="Jaguar F Type">
+                </div>
+                <div class="gallery-item">
+                    <img src="{{ url_for('static', filename='img/911.jpg') }}" alt="Porsche 911">
+                </div>
+            </div>
+        </section>
+
+        <section id="booking" class="booking">
+            <div class="container">
+                <h1>Jak se objednat?</h1>
+                <ol>
+                    <li>Pokud se chcete objednat na servis, nejprve si musíte <a href="{{ url_for('user.view_register_page') }}">založit uživatelský účet</a>.</li>
+                    <li>V případě, že už uživatelský účet máte, stačí se do něj <a href="{{ url_for('user.view_signin_page') }}">přihlásit</a>.</li>
+                    <li>Poté si můžete přidat vozidlo do vaší <a href="{{ url_for('vehicle.view_manage_vehicles_page') }}">garáže</a>.</li>
+                    <li>Požadovanou objednávku můžete vytvořit <a href="{{ url_for('order.view_create_order_page') }}">zde</a>.</li>
+                </ol>
+            </div>
+        </section>
+
+
+        <section id="contact" class="contact">
+            <h1>Kontakt</h1>
+            <p>V případě jakéhokoli dotazu nás neváhejte kontaktovat.</p>
+            <div class="contact-details">
+                <a href="tel:+420123456789">+420 123 456 789</a>
+                <a href="mailto:info@hr-autoservis123.cz">info@hr-autoservis123.cz</a>
+                <p>Autoservisácká 128/67, Brno</p>
+            </div>
+        </section>
+    </div>
+{% endblock %}
